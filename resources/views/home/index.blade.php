@@ -1,9 +1,10 @@
 @extends('layouts.fe') <!--Para immportar o layout-->
 
-@section('content') <!-- Para importar o content do layout-->
+@section('content')
+    <!-- Para importar o content para o layout-->
 
-<!--tudo que estiver aqui aparece abaixo do definido no layout-->
-<h2>Página Home</h2>
+    <!--tudo que estiver aqui aparece abaixo do definido no layout-->
+    <h2>Página Home</h2>
 
     <ul><!--Encapsular a li no <a> faz com que seja clicável-->
         <a href="{{ route('home.welcome') }}">
@@ -22,5 +23,9 @@
 
         <img class="test-img" src="{{ asset('images/Star-Wars-45-2024.webp') }}" alt="starWars">
     </ul>
+@endsection
 
-    @endsection
+<!--Início outro content-->
+@section('content2')
+    <h3>Content 2</h3>
+@endsection
