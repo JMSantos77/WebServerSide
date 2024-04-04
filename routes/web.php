@@ -9,7 +9,7 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return view('home.index'); //Para chamar files dentro de pastas: home.index
-})->name('home');
+})->name('home'); //Pooso também dar um nome definido por mim para esta rota.
 
 
 Route::fallback(function () {
