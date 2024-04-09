@@ -8,9 +8,7 @@ class UserController extends Controller
 {
     public function allUsers()
     {
-
         $allUsers = $this->getUsers();
-
         return view('users.all_users', compact('allUsers'));
     }
 

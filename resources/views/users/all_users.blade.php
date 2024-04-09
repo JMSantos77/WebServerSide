@@ -8,7 +8,7 @@
     <!--A colocar o array numa table-->
 
     <table class="table">
-        <thead>
+        <thead class="table-secondary">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
@@ -16,12 +16,12 @@
             </tr>
         </thead>
 
-        <tbody>
+        <tbody class="table-warning">
             @foreach ($allUsers as $user)
                 <tr>
                     <th scope="row">{{ $user['id'] }}</th>
-                    <th>{{ $user['name'] }}</th>
-                    <th>{{ $user['phone'] }}</th>
+                    <td>{{ $user['name'] }}</td>
+                    <td>{{ $user['phone'] }}</td>
                 </tr>
             @endforeach
 
