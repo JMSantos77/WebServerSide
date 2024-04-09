@@ -22,6 +22,13 @@
         <br>
 
         <img class="test-img" src="{{ asset('images/Star-Wars-45-2024.webp') }}" alt="starWars">
+
+        <br>
+
+        <h5>Info do Cesae:</h5>
+        <h5> Nome: {{ $cesaeInfo['name'] }} </h5>
+        <h5>Morada: {{ $cesaeInfo['adress'] }}</h5>
+        <h5>Email: {{ $cesaeInfo['email'] }}</h5>
     </ul>
 @endsection
 

@@ -60,9 +60,13 @@
         </div>
     </nav>
 
-    @yield('content2')
+    <!--Este é o layout Master-->
+    <div class="container"> <!--class = "container" para arranjar o layout Master-->
+        @yield('content2')
 
-    @yield('content')
+        @yield('content')
+    </div>
+
 
 
 
