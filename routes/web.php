@@ -43,7 +43,10 @@ Route::get('/users', function () {
 
 
 
-Route::get('/user', [UserController::class, 'viewUser'])->name('users.view');
+Route::get('/user/{id}', [UserController::class, 'viewUser'])->name('users.view');
+Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
+
+
 Route::get('/user-add', [UserController::class, 'addUser'])->name('users.add');
 Route::get('/user-update', [UserController::class, 'updateUser'])->name('users.update');
 
@@ -61,6 +64,6 @@ Route::get('/hello/{name}', function ($name) {
 Route::get('/hello/{name}', [UserController::class, 'helloName']);
 
 
-Route::get('/user', [UserController::class, 'viewUser'])->name('users.view');
+//Route::get('/user', [UserController::class, 'viewUser'])->name('users.view');
 
 Route::get('/tasks', [TaskController::class, 'allTasks'])->name('tasks.view');

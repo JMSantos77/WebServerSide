@@ -7,15 +7,17 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function allUsers(){
+    public function allUsers()
+    {
         $allUsers = $this->getUsers();
 
-        $delegadoTurma = DB::table('users')->where('name','Toni')->first();
+        $delegadoTurma = DB::table('users')->where('name', 'Toni')->first();
 
         return view('users.all_users', compact('allUsers', 'delegadoTurma'));
     }
 
-    protected function getUsers(){
+    protected function getUsers()
+    {
 
         $users = DB::table('users') //Vai buscar os dados à DB, tabela users
             ->get();
@@ -52,10 +54,25 @@ class UserController extends Controller
 
 
     // ** Métodos **
-    public function viewUser()
+    public function viewUser($id)
     {
-        return view('users.user_view');
+        $user = DB::table('users')
+            ->where('id', $id)
+            ->first();
+
+            //dd($user);
+
+        return view('users.user_view', compact('user'));
     }
+
+    public function deleteUser($id)
+    {
+        //DB::table('tasks')->where('user_Id', $id)->delete(); //Se quisermos apagar alguém que tem task, primeiro temos de apagar a task
+        DB::table('users')->where('id', $id)->delete();
+
+        return redirect() ->back();
+    }
+
 
     public function addUser()
     {
@@ -64,13 +81,6 @@ class UserController extends Controller
                 'name' => 'Xana',
                 'email' => 'eee@aaa.com',
                 'password' => '234aaa'
-            ]);
-
-        DB::table('users')
-            ->insert([
-                'name' => 'Lena',
-                'email' => 'fff@aaa.com',
-                'password' => '2345aaa'
             ]);
     }
 

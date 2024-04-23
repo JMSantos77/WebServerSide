@@ -19,10 +19,6 @@
             <li>Users</li>
         </a>
 
-        <a href="{{ route('users.view') }}">
-            <li>User</li>
-        </a>
-
         <a href="{{ route('tasks.view') }}">
             <li>Tasks</li>
         </a>
