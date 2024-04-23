@@ -63,4 +63,4 @@ Route::get('/hello/{name}', [UserController::class, 'helloName']);
 
 Route::get('/user', [UserController::class, 'viewUser'])->name('users.view');
 
-Route::get('/tasks', [TaskController::class, 'viewTasks'])->name('tasks.view');
+Route::get('/tasks', [TaskController::class, 'allTasks'])->name('tasks.view');
