@@ -19,6 +19,14 @@
             <li>Users</li>
         </a>
 
+        <a href="{{ route('users.view') }}">
+            <li>User</li>
+        </a>
+
+        <a href="{{ route('tasks.view') }}">
+            <li>Tasks</li>
+        </a>
+
         <br>
 
         <img class="test-img" src="{{ asset('images/Star-Wars-45-2024.webp') }}" alt="starWars">

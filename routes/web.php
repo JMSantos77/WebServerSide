@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TaskController;
 
 Route::get('/home', [IndexController::class, 'homePage'])->name('home');
 /*
@@ -41,6 +42,12 @@ Route::get('/users', function () {
 */
 
 
+
+Route::get('/user', [UserController::class, 'viewUser'])->name('users.view');
+Route::get('/user-add', [UserController::class, 'addUser'])->name('users.add');
+Route::get('/user-update', [UserController::class, 'updateUser'])->name('users.update');
+
+
 /**
  * Isto faz com que colocando no browser http://127.0.0.1:8000/hello/Miguel passe
  * Miguel como param e concatene Olá + Miguel
@@ -52,3 +59,8 @@ Route::get('/hello/{name}', function ($name) {
 */
 
 Route::get('/hello/{name}', [UserController::class, 'helloName']);
+
+
+Route::get('/user', [UserController::class, 'viewUser'])->name('users.view');
+
+Route::get('/tasks', [TaskController::class, 'viewTasks'])->name('tasks.view');
