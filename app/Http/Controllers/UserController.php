@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -107,5 +109,24 @@ class UserController extends Controller
                     'email' => 'testeUpdate@aaa.com' // Update para testeUpdate@aaa.com
                 ]
             );
+    }
+
+    public function createUser(Request $request){
+
+
+        $request->validate([
+            'name'=>'string|max:50',
+            'email'=>'required|email|unique:users',
+            'password'=>'required|min:5'
+        ]);
+
+        User::insert([
+            'name'=> $request->name,
+            'email'=>$request->email,
+            'password'=> Hash::make($request->password),
+        ]);
+
+        //return redirect()->route('users.create')->with('message','Adicionado com Sucesso');
+        return redirect()->back()->with('message','Adicionado com Sucesso');
     }
 }

@@ -70,7 +70,7 @@ Route::get('/hello/{name}', [UserController::class, 'helloName']);
 Route::get('/tasks', [TaskController::class, 'allTasks'])->name('tasks.view');
 
 
-
+//Gifts Controllers
 Route::get('/gifts', [GiftController::class, 'userGifts'])->name('gifts.users_Gifts');
 
 Route::get('/gift/{id}', [GiftController::class, 'giftView'])->name('gifts.gift_view');
@@ -78,3 +78,6 @@ Route::get('/gift/{id}', [GiftController::class, 'giftView'])->name('gifts.gift_
 Route::get('/delete-gift/{id}', [GiftController::class, 'deleteGift'])->name('gift.delete');
 
 Route::get('create-gift', [GiftController::class, 'createGift'])->name('gift.create');
+
+//Rota para criar User
+Route::post('/create-user', [UserController::class, 'createUser'])->name('users.create');
