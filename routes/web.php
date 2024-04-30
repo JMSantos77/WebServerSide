@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GiftController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\UserController;
@@ -67,3 +68,11 @@ Route::get('/hello/{name}', [UserController::class, 'helloName']);
 //Route::get('/user', [UserController::class, 'viewUser'])->name('users.view');
 
 Route::get('/tasks', [TaskController::class, 'allTasks'])->name('tasks.view');
+
+
+
+Route::get('/gifts', [GiftController::class, 'userGifts'])->name('gifts.users_Gifts');
+
+Route::get('/gift/{id}', [GiftController::class, 'giftView'])->name('gifts.gift_view');
+
+Route::get('/delete-gift/{id}', [GiftController::class, 'deleteGift'])->name('gift.delete');

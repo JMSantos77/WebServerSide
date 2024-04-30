@@ -23,6 +23,10 @@
             <li>Tasks</li>
         </a>
 
+        <a href="{{ route('gifts.users_Gifts') }}">
+            <li>Prendas</li>
+        </a>
+
         <br>
 
         <img class="test-img" src="{{ asset('images/Star-Wars-45-2024.webp') }}" alt="starWars">
