@@ -76,3 +76,5 @@ Route::get('/gifts', [GiftController::class, 'userGifts'])->name('gifts.users_Gi
 Route::get('/gift/{id}', [GiftController::class, 'giftView'])->name('gifts.gift_view');
 
 Route::get('/delete-gift/{id}', [GiftController::class, 'deleteGift'])->name('gift.delete');
+
+Route::get('create-gift', [GiftController::class, 'createGift'])->name('gift.create');

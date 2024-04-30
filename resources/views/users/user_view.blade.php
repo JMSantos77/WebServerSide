@@ -6,6 +6,7 @@
     <!--A colocar o array numa table-->
 
     <table class="table">
+
         <thead class="table-secondary">
             <tr>
                 <th scope="col">#</th>
@@ -22,4 +23,8 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
             </tr>
-        @endsection
+        </tbody>
+
+    </table>
+
+@endsection

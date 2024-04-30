@@ -7,34 +7,48 @@ use Illuminate\Support\Facades\DB;
 
 class GiftController extends Controller
 {
-    public function userGifts(){
+    public function userGifts()
+    {
 
-        $allGifts = $this->getGifts();
+        $allGifts = $this->mergeWithUsers();
 
         return view('gifts.users_gifts', compact('allGifts'));
     }
 
-    public function getGifts(){
+    public function mergeWithUsers()
+    {
+        $mergeTables = DB::table('gifts')
+            ->join('users', 'users.id', '=', 'gifts.user_Id')
+            ->select('gifts.*', 'users.name AS userName',)
+            ->get();
+        return $mergeTables;
+    }
+
+    public function getGifts()
+    {
         $giftsTable = DB::table('gifts')
-        ->get();
+            ->get();
 
         return $giftsTable;
     }
 
-    public function giftView($id){
+    public function giftView($id)
+    {
 
         $gift = DB::table(('gifts'))
-        ->where('id', $id)
-        ->first();
+            ->where('gifts.id', $id)
+            ->join('users', 'users.id', '=', 'gifts.user_Id')
+            ->select('gifts.*', 'users.name AS userName')
+            ->first();
 
         return view('gifts.gift_view', compact('gift'));
     }
 
-    public function deleteGift($id){
+    public function deleteGift($id)
+    {
 
         DB::table('gifts')->where('id', $id)->delete();
 
-        return redirect() ->back();
+        return redirect()->back();
     }
-
 }

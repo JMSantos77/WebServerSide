@@ -4,6 +4,7 @@
     <h1>Lista de Prendas</h1>
 
     <table class="table">
+
         <thead class="table-secondary">
             <tr>
                 <th scope="col">Nome Prenda</th>
@@ -19,7 +20,7 @@
             @foreach ($allGifts as $gifts)
                 <tr>
                     <th scope="row">{{ $gifts->giftName }}</th>
-                    <td>{{ $gifts->user_Id }}</td>
+                    <td>{{ $gifts->userName }}</td>
                     <td>{{ $gifts->predictedValue }}</td>
                     <td>
                         <a href="{{ route('gifts.gift_view', $gifts->id) }}"><button class="btn btn-info">Ver</button> </a>
@@ -31,6 +32,8 @@
                     </td>
                 </tr>
             @endforeach
+
         </tbody>
+
     </table>
 @endsection

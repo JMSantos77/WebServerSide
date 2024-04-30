@@ -10,6 +10,7 @@
     <!--A colocar o array numa table-->
 
     <table class="table">
+        
         <thead class="table-secondary">
             <tr>
                 <th scope="col">#</th>
@@ -38,5 +39,7 @@
             @endforeach
 
         </tbody>
+
     </table>
+
 @endsection
