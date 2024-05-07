@@ -1,30 +1,51 @@
 @extends('layouts.fe')
 
 @section('content')
+
     <h1>Olá, sou um user</h1>
 
-    <!--A colocar o array numa table-->
+    <form method="POST" action="{{ route('users.create') }}">
+        @csrf
 
-    <table class="table">
+        <input type="hidden" name="id" value="{{$user->id}}"> <!--Input escondido para enviar user id -->
 
-        <thead class="table-secondary">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
+        <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Nome</label>
+            <input name="name" value="{{ $user->name }}" type="name" class="form-control" id="exampleInputName"
+                aria-describedby="emailHelp">
+            @error('name')
+                Nome maior que 50 Char!
+            @enderror
+        </div>
 
-            </tr>
-        </thead>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">E-Mail</label>
+            <input readonly name="email" value="{{ $user->email }}" type="email" class="form-control"
+                id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            @error('email')
+                Email já existe!
+            @enderror
+        </div>
 
-        <tbody class="table-warning">
+        <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Morada</label>
+            <input name="address" value="{{ $user->address }}" type="name" class="form-control" id="exampleInputName"
+                aria-describedby="emailHelp">
+            @error('address')
+                Erro de name
+            @enderror
+        </div>
 
-            <tr>
-                <th scope="row">{{ $user->id }}</th>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-            </tr>
-        </tbody>
+        <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Código Postal</label>
+            <input name="cpostal" value="{{ $user->cpostal }}" type="name" class="form-control" id="exampleInputName"
+                aria-describedby="emailHelp">
+            @error('cpostal')
+                Erro de name
+            @enderror
+        </div>
 
-    </table>
-
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 @endsection

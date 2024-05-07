@@ -43,7 +43,7 @@ Route::get('/users', function () {
 */
 
 
-
+//View User and Delete User
 Route::get('/user/{id}', [UserController::class, 'viewUser'])->name('users.view');
 Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
 
@@ -67,7 +67,13 @@ Route::get('/hello/{name}', [UserController::class, 'helloName']);
 
 //Route::get('/user', [UserController::class, 'viewUser'])->name('users.view');
 
+
+//Tasks Routes
 Route::get('/tasks', [TaskController::class, 'allTasks'])->name('tasks.view');
+Route::get('/task/{id}', [TaskController::class, 'viewTask'])->name('task.view');
+
+Route::get('/add-task', [TaskController::class, 'addTask'])->name('tasks.add');
+Route::post('/create-task', [TaskController::class, 'createTask'])->name('tasks.create');
 
 
 //Gifts Controllers
@@ -78,6 +84,7 @@ Route::get('/gift/{id}', [GiftController::class, 'giftView'])->name('gifts.gift_
 Route::get('/delete-gift/{id}', [GiftController::class, 'deleteGift'])->name('gift.delete');
 
 Route::get('create-gift', [GiftController::class, 'createGift'])->name('gift.create');
+
 
 //Rota para criar User
 Route::post('/create-user', [UserController::class, 'createUser'])->name('users.create');

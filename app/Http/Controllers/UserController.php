@@ -62,7 +62,7 @@ class UserController extends Controller
             ->where('id', $id)
             ->first();
 
-            //dd($user);
+        //dd($user);
 
         return view('users.user_view', compact('user'));
     }
@@ -72,7 +72,7 @@ class UserController extends Controller
         //DB::table('tasks')->where('user_Id', $id)->delete(); //Se quisermos apagar alguém que tem task, primeiro temos de apagar a task
         DB::table('users')->where('id', $id)->delete();
 
-        return redirect() ->back();
+        return redirect()->back();
     }
 
 
@@ -111,22 +111,42 @@ class UserController extends Controller
             );
     }
 
-    public function createUser(Request $request){
+    public function createUser(Request $request)
+    {
+        //Se for um update
+        if (isset($request->id)) {
 
+            $request->validate([
+                'name' => 'string|max:50',
+                'address' => 'string',
+                'cpostal' => 'string'
+            ]);
 
-        $request->validate([
-            'name'=>'string|max:50',
-            'email'=>'required|email|unique:users',
-            'password'=>'required|min:5'
-        ]);
+            User::where('id', $request->id)->update([
+                'name' => $request->name,
+                'address' => $request->address,
+                'cpostal' => $request->cpostal,
+            ]);
 
-        User::insert([
-            'name'=> $request->name,
-            'email'=>$request->email,
-            'password'=> Hash::make($request->password),
-        ]);
+            return redirect()->route('users.all')->with('message', 'User atualizado com Sucesso');
 
-        //return redirect()->route('users.create')->with('message','Adicionado com Sucesso');
-        return redirect()->back()->with('message','Adicionado com Sucesso');
+            //Se for novo
+        } else {
+
+            $request->validate([
+                'name' => 'string|max:50',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|min:5'
+            ]);
+
+            User::insert([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+
+            //return redirect()->route('users.create')->with('message','Adicionado com Sucesso');
+            return redirect()->back()->with('message', 'Adicionado com Sucesso');
+        }
     }
 }
