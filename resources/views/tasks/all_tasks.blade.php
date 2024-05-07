@@ -21,7 +21,7 @@
                     <td>{{ $task->name }}</td>
                     <td>{{ $task->description }}</td>
                     <td>
-                        <a href="{{ route('task.view', $task->id) }}"><button class="btn btn-info">Ver/Editar</button> </a>
+                        <a href="{{ route('task.edit', $task->id) }}"><button class="btn btn-info">Ver/Editar</button> </a>
                     </td>
                 </tr>
             @endforeach

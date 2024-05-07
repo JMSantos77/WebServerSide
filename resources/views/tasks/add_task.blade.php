@@ -13,7 +13,7 @@
     <form action="{{ route('tasks.create') }}" method="POST">
     @csrf
 
-    
+
 
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nome</label>
@@ -29,7 +29,7 @@
             <label for="exampleInputPassword1" class="form-label">Descrição</label>
             <input type="text" name="description" value="" class="form-control" id="exampleInputPassword1">
             @error('description')
-                Char error!
+                Char error - Maior que 255!
             @enderror
         </div>
 

@@ -25,7 +25,7 @@ class TaskController extends Controller
         return $tasks;
     }
 
-    public function viewTask($id)
+    public function editTask($id)
     {
         $task = DB::table('tasks')
             ->where('tasks.id', $id)
@@ -34,7 +34,7 @@ class TaskController extends Controller
             ->first();
 
 
-        return view('tasks.view_task', compact('task'));
+        return view('tasks.edit_task', compact('task'));
     }
 
     //Adicionar Tarefa
@@ -52,7 +52,7 @@ class TaskController extends Controller
         if (isset($request->id)) {
 
             $request->validate([
-                'name' => 'required|string|max:10',
+                'name' => 'required|string|max:50',
                 'description' => 'required|string|max:255',
 
             ]);
@@ -66,7 +66,7 @@ class TaskController extends Controller
             return redirect()->route('tasks.view')->with('message', 'Tarefa atualizada com sucesso!');
         } else {
             $request->validate([                     //Tratar das validações
-                'name' => 'required|string|max:10',
+                'name' => 'required|string|max:50',
                 'description' => 'required|string|max:255',
                 'user_Id' => 'required'
             ]);

@@ -71,7 +71,7 @@ Route::get('/hello/{name}', [UserController::class, 'helloName']);
 //Tasks Routes
 Route::get('/tasks', [TaskController::class, 'allTasks'])->name('tasks.view');
 
-Route::get('/task/{id}', [TaskController::class, 'viewTask'])->name('task.view');
+Route::get('/task/{id}', [TaskController::class, 'editTask'])->name('task.edit');
 
 Route::get('/add-task', [TaskController::class, 'addTask'])->name('tasks.add');
 
