@@ -60,7 +60,7 @@ class TaskController extends Controller
             DB::table('tasks')->where('id', $request->id)->update([
                 'name' => $request->name,
                 'description' => $request->description,
-                
+
             ]);
 
             return redirect()->route('tasks.view')->with('message', 'Tarefa atualizada com sucesso!');
