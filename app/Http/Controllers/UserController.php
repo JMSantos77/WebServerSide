@@ -11,7 +11,28 @@ class UserController extends Controller
 {
     public function allUsers()
     {
-        $allUsers = $this->getUsers();
+        //$allUsers = $this->getUsers(); //Trocamos para query direta em baixo para pesquisar
+
+        /* //Sem ternário
+        $search = null;
+        if(request()->query('search')){
+            $search = request()->query('search');
+        }else{
+            $search == null;
+        }
+        */
+
+        //Com ternário
+        $search = request()->query('search') ? request()->query('search') : null;
+
+        if ($search) {
+            $allUsers = DB::table('users')
+                ->where('name', "LIKE", "%{$search}%")
+                ->orWhere('email', "LIKE", "%{$search}%")
+                ->get();
+        } else {
+            $allUsers = DB::table('users')->get();
+        }
 
         $delegadoTurma = DB::table('users')->where('name', 'Toni')->first();
 

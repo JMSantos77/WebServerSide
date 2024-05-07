@@ -2,16 +2,20 @@
 
 @section('content')
 
+    {{-- Comentado pq qd se filtra já não se consegue devolver na posição 0 --}}
+    {{-- <h1>Olá, eu sou o utilizador {{ $allUsers[0]->name }}!</h1>
 
-
-    <h1>Olá, eu sou o utilizador {{ $allUsers[0]->name }}!</h1>
-
-    <h5>{{ $delegadoTurma->name }} : {{ $delegadoTurma->email }}</h5>
+    <h5>{{ $delegadoTurma->name }} : {{ $delegadoTurma->email }}</h5> --}}
 
     <br>
 
-    <!--A colocar o array numa table-->
+    <!--Para realizar pesquisa-->
+    <form action="">
+        <input type="text" name="search" value="{{ request()->query('search') }}" id="" placeholder="Procurar">
+        <button class="btn btn-secondary">Procurar</button>
+    </form>
 
+    <!--A colocar o array numa table-->
     <table class="table">
 
         <thead class="table-secondary">
@@ -72,8 +76,8 @@
                 aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             @error('email')
-            Email já existe!
-        @enderror
+                Email já existe!
+            @enderror
         </div>
 
         <div class="mb-3">
