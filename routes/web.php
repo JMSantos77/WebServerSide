@@ -35,6 +35,7 @@ Route::get('/hello', function () {
 })->name('home.hello');
 */
 
+//Users Routes
 Route::get('/users', [UserController::class, 'allUsers'])->name('users.all');
 /*
 Route::get('/users', function () {
@@ -42,12 +43,14 @@ Route::get('/users', function () {
 })->name('users.all');
 */
 
+//Rota para criar User
+Route::post('/create-user', [UserController::class, 'createUser'])->name('users.create');
 
 //View User and Delete User
 Route::get('/user/{id}', [UserController::class, 'viewUser'])->name('users.view');
 Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
 
-
+//Add and Update User
 Route::get('/user-add', [UserController::class, 'addUser'])->name('users.add');
 Route::get('/user-update', [UserController::class, 'updateUser'])->name('users.update');
 
@@ -88,5 +91,4 @@ Route::get('/delete-gift/{id}', [GiftController::class, 'deleteGift'])->name('gi
 Route::get('create-gift', [GiftController::class, 'createGift'])->name('gift.create');
 
 
-//Rota para criar User
-Route::post('/create-user', [UserController::class, 'createUser'])->name('users.create');
+

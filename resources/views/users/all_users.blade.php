@@ -7,6 +7,8 @@
 
     <h5>{{ $delegadoTurma->name }} : {{ $delegadoTurma->email }}</h5> --}}
 
+    <h3>Olá {{Auth::user()->name}} </h3> <!--A partir de agora, com Auth conseguimos aceder a todos os dados do user loggado em qq lado-->
+
     <br>
 
     <!--Para realizar pesquisa-->
