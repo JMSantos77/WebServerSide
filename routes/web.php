@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GiftController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
@@ -52,6 +53,7 @@ Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('us
 
 //Add and Update User
 Route::get('/user-add', [UserController::class, 'addUser'])->name('users.add');
+
 Route::get('/user-update', [UserController::class, 'updateUser'])->name('users.update');
 
 
@@ -89,6 +91,10 @@ Route::get('/gift/{id}', [GiftController::class, 'giftView'])->name('gifts.gift_
 Route::get('/delete-gift/{id}', [GiftController::class, 'deleteGift'])->name('gift.delete');
 
 Route::get('create-gift', [GiftController::class, 'createGift'])->name('gift.create');
+
+//Dashboard Route
+
+Route::get('/dashboard', [DashboardController::class, 'dashboardView'])->name('dashboard');
 
 
 

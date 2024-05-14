@@ -96,7 +96,7 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-
+    /*
     public function addUser()
     {
         DB::table('users')
@@ -106,6 +106,15 @@ class UserController extends Controller
                 'password' => '234aaa'
             ]);
     }
+*/
+
+    //Rota para retornar o register alterada e criada nova blade para criar novo user
+    public function addUser()
+    {
+        return view('users.create_users');
+    }
+
+
 
     /*
     public function updateUser(){
