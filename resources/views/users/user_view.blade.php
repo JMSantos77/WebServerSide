@@ -4,7 +4,7 @@
 
     <h1>Olá, sou um user</h1>
 
-    <form method="POST" action="{{ route('users.create') }}">
+    <form method="POST" action="{{ route('users.create') }}" enctype="multipart/form-data">
         @csrf
 
         <input type="hidden" name="id" value="{{$user->id}}"> <!--Input escondido para enviar user id -->
@@ -43,6 +43,15 @@
                 aria-describedby="emailHelp">
             @error('cpostal')
                 Erro de name
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="photo" class="form-label">Adicione Foto</label>
+            <input name="photo" accept="image/*" value="{{ $user->cpostal }}" type="file" class="form-control" id="photo"
+                aria-describedby="emailHelp">
+            @error('photo')
+            Erro de Foto
             @enderror
         </div>
 

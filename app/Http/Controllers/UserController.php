@@ -4,13 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
     public function allUsers()
     {
+        //Se quiser passar no controller o tipo
+        //If profile is admin, vou buscar o tipo a User.php
+        //$admin = User::TYPE_ADMIN;
+
+
+
         //$allUsers = $this->getUsers(); //Trocamos para query direta em baixo para pesquisar
 
         /* //Sem ternário
@@ -145,17 +153,26 @@ class UserController extends Controller
     {
         //Se for um update
         if (isset($request->id)) {
+            //dd($request->photo);
+
+            $photo=null;
 
             $request->validate([
                 'name' => 'string|max:50',
                 'address' => 'string',
-                'cpostal' => 'string'
+                'cpostal' => 'string',
+                //'photo' => 'image'
             ]);
+
+            if($request->hasFile('photo')){
+                $photo = Storage::putFile('userPhotos/', $request->photo);
+            }
 
             User::where('id', $request->id)->update([
                 'name' => $request->name,
                 'address' => $request->address,
                 'cpostal' => $request->cpostal,
+                'photo' => $photo, //Pq queremos mandar o caminho
             ]);
 
             return redirect()->route('users.all')->with('message', 'User atualizado com Sucesso');

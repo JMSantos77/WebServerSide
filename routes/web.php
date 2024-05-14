@@ -94,7 +94,7 @@ Route::get('create-gift', [GiftController::class, 'createGift'])->name('gift.cre
 
 //Dashboard Route
 
-Route::get('/dashboard', [DashboardController::class, 'dashboardView'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dashboardView'])->name('dashboard')->middleware('auth');
 
 
 

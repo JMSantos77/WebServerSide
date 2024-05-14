@@ -51,5 +51,15 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::registerView(function () {
             return view('users.add');
         });
+
+        //Adicionei aqui a recup de pass
+        Fortify::requestPasswordResetLinkView(function () {
+            return view('auth.forgot-password');
+        });
+
+        //Adicionei aqui a reset de pass
+        Fortify::resetPasswordView(function (Request $request) {
+            return view('auth.reset-password', ['request' => $request]);
+        });
     }
 }

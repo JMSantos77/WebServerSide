@@ -1,14 +1,14 @@
 @extends('layouts.fe') <!--Para immportar o layout-->
 
 @section('content')
-
     {{-- Comentado pq qd se filtra já não se consegue devolver na posição 0 --}}
     {{-- <h1>Olá, eu sou o utilizador {{ $allUsers[0]->name }}!</h1>
 
     <h5>{{ $delegadoTurma->name }} : {{ $delegadoTurma->email }}</h5> --}}
 
     {{-- <h3>Olá {{Auth::user()->name}} </h3> <!--A partir de agora, com Auth conseguimos aceder a todos os dados do user loggado em qq lado--> --}}
-    <h3>Olá {{ auth()->check() ? Auth::user()->name : 'Visitante' }} </h3> <!--Opção com ternário para não dar erro se não loggado-->
+    <h3>Olá {{ auth()->check() ? Auth::user()->name : 'Visitante' }} </h3>
+    <!--Opção com ternário para não dar erro se não loggado-->
 
     <br>
 
@@ -34,7 +34,7 @@
         <tbody class="table-warning">
             @foreach ($allUsers as $user)
                 <tr>
-                    <th scope="row">{{ $user->id }}</th>
+                    <th scope="row"><img height="30px" width="30px" src="{{$user->photo ? asset('storage/'. $user->photo): asset('images/default.jpg')}}" alt=""></th>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
@@ -42,7 +42,17 @@
 
                     </td>
                     <td>
-                        <a href="{{ route('users.delete', $user->id) }}"><button class="btn btn-danger">Apagar</button> </a>
+                        {{-- Adicionei aqui if para só ver botão se for Admin --}}
+                        @auth
+                            @if (Auth::user()->user_type == \App\models\User::TYPE_ADMIN)
+                                <a href="{{ route('users.delete', $user->id) }}"><button class="btn btn-danger">Apagar</button>
+                                </a>
+                            @endif
+                        @endauth
+
+
+
+                        {{-- <a href="{{ route('users.delete', $user->id) }}"><button class="btn btn-danger">Apagar</button> </a> --}}
 
                     </td>
                 </tr>
